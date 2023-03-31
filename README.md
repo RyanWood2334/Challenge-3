@@ -1,4 +1,4 @@
-# Challenge-4
+# Challenge-3
 
 ## Description
 This website is a random password generator! it uses CSS and HTML for the display, and javascript to take user input and create a random password. I found it difficult to keep up with all the various operators, and the ins and outs of javascript, so this project was extremely valuable for my learning and devlopement.
