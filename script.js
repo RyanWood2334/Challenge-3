@@ -33,15 +33,16 @@ function getPasswordLength() {
 
 function getLowercase(){
     var lowercaseCheck = window.prompt("Would you like to use lowercase characters? (Y / N)")
-    
-    if (lowercaseCheck.toLocaleUpperCase() === "N") {
-        console.log("Lowercase Denied");
-        
-    } else {
+    if (lowercaseCheck.toLocaleUpperCase() === "Y"){
         var lowercaseArray = "abcdefghijklmnopqrstuvwxyz".split("")
         containedCharacters.splice(0,0, ...lowercaseArray )
         console.log("containedCharacters", containedCharacters);
-        
+    } else if (lowercaseCheck.toLocaleUpperCase() === "N") {
+        console.log("Lowercase Denied");    
+            
+    } else {
+        window.alert("please input either Y(es) or N(o) ")
+        lowercaseCheck = getLowercase()
     }
     return lowercaseCheck
     
@@ -49,25 +50,29 @@ function getLowercase(){
 
 function getUppercase(){
     var uppercaseCheck = window.prompt("Would you like to use uppercase characters? (Y / N)")
-    if (uppercaseCheck.toLocaleUpperCase() === "N") {
-        console.log("Uppercase Denied"); 
-    } else {
+    if (uppercaseCheck.toLocaleUpperCase() === "Y") {
         var uppercaseArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
         containedCharacters.splice(0,0, ...uppercaseArray)
         console.log("containedCharacters", containedCharacters);
+    } else if (uppercaseCheck.toLocaleUpperCase() === "N") {
+        console.log("Uppercase Denied"); 
+    } else {
+        window.alert("please input either Y(es) or N(o) ")
+        uppercaseCheck = getUppercase()
     }
     return uppercaseCheck
-    
 }
-
 function getNumeric() {
     numCheck = window.prompt("Would you like to use numbers in your password? (Y / N)" )
-    if (numCheck.toLocaleUpperCase() === "N") {
-        console.log("Numbers Denied"); 
-    } else {
+    if (numCheck.toLocaleUpperCase() === "Y") {
         var numArray = "0123456789".split("")
         console.log("containedCharacters", containedCharacters);
         containedCharacters.splice(0,0, ...numArray)
+    } else if (numCheck.toLocaleUpperCase() === "N"){
+        console.log("Numbers Denied"); 
+    } else {
+        window.alert("please input either Y(es) or N(o) ")
+        numCheck = getNumeric()
     }
     return numCheck
 
@@ -75,12 +80,15 @@ function getNumeric() {
 
 function getSymbols(){
     symbolCheck = window.prompt("Would you like to use special characters in your password?(Y / N)")
-    if (symbolCheck.toLocaleUpperCase() === "N") {
-        console.log("Symbols Denied"); 
-    } else {
+    if (symbolCheck.toLocaleUpperCase() === "Y") {
         var symbolArray = "!@#$%^&*-_=+`~?.,<>".split("")
         containedCharacters.splice(0,0, ...symbolArray )
         console.log("containedCharacters", containedCharacters);
+    } else if (symbolCheck.toLocaleUpperCase() === "N") {
+        console.log("Symbols Denied"); 
+    } else {
+        window.alert("please input either Y(es) or N(o) ")
+        symbolCheck = getSymbols()
     }
     return symbolCheck
     
@@ -98,6 +106,7 @@ function randomCharacters(desiredLength, containedCharacters){
 
 function generatePassword(containedCharacters){
     //godzilla function
+    var finalPassword = ""
     console.log("generatePassword");
     console.log("containedCharacters #1", containedCharacters);
     var desiredLength = getPasswordLength()
@@ -108,14 +117,14 @@ function generatePassword(containedCharacters){
     getSymbols()
     if (containedCharacters.length === 0) {
         window.alert("Please input at least one character type for password criteria")
-        generatePassword(containedCharacters)
+        finalPassword = generatePassword(containedCharacters)
     } else {
         console.log("containedCharacters #2", containedCharacters);
         randomCharacters(desiredLength, containedCharacters)
-        var finalPassword = randomCharacters(desiredLength, containedCharacters)
+        finalPassword = randomCharacters(desiredLength, containedCharacters)
         console.log("finalpassword", finalPassword);
-        return finalPassword
     }
+    return finalPassword
 }
 
 
